@@ -20,13 +20,15 @@ namespace AI.Pathfinding
             var nodes = graphMaker.nodes;
             var edges = graphMaker.edges;
 
-            StartCoroutine(Search(nodes, edges, startNode, endNode));
+            List<Node> bestPath = new List<Node>();
+
+            StartCoroutine(Search(nodes, edges, startNode, endNode, bestPath));
 
         }
 
-        IEnumerator Search(List<Node> nodes, List<Edge> edges, Node startNode, Node endNode)
+        public IEnumerator Search(List<Node> nodes, List<Edge> edges, Node startNode, Node endNode, List<Node> bestPath)
         {
-            float waitTime = 0.1f;
+            float waitTime = 0.01f;
 
             List<Node> openSet = new List<Node>();
             List<Node> closedSet = new List<Node>();
@@ -38,7 +40,7 @@ namespace AI.Pathfinding
 
             while (openSet.Count > 0)
             {
-                Node n = GetBestNode(openSet);
+                Node n = GetBestNode(openSet, true);
                 openSet.Remove(n);
                 closedSet.Add(n);
 
@@ -57,7 +59,7 @@ namespace AI.Pathfinding
                     if (!closedSet.Contains(neigh) && !openSet.Contains(neigh))
                     {
                         Edge e = graphMaker.GetEdge(n, neigh);
-                        e.color = Color.green;
+                        e.color = Color.red;
                         yield return new WaitForSeconds(waitTime);
 
                         neigh.cost = n.cost + Vector2.Distance(neigh.transform.position, n.transform.position);
@@ -68,19 +70,47 @@ namespace AI.Pathfinding
                 }
             }
 
+            Debug.Log("SEARCH FINISHED");
+
+            bestPath.Add(endNode);
+            var currentNode = endNode;
+
+            while (currentNode != startNode)
+            {
+                // Get the neighbours of the current node
+                List<Node> neighs = graphMaker.GetNeighbours(currentNode);
+
+                //Find shortest path
+                Node bestNeigh = GetBestNode(neighs, false);
+
+                Edge e = graphMaker.GetEdge(currentNode, bestNeigh);
+
+                bestPath.Add(bestNeigh);
+                currentNode = bestNeigh;
+
+                currentNode.color = Color.green;
+                e.color = Color.green;
+
+                yield return new WaitForSeconds(waitTime);
+
+            }
+
+            bestPath.Reverse();
+
             yield return null;
         }
 
-        private Node GetBestNode(List<Node> set)
+        private Node GetBestNode(List<Node> set, bool useHeuristic)
         {
             Node bestNode = null;
             float bestTotal = float.MaxValue;
 
             foreach (Node n in set)
             {
-                if (n.cost + n.heuristic < bestTotal)
+                var totalCost = useHeuristic ? n.cost + n.heuristic : n.cost; 
+                if (totalCost < bestTotal)
                 {
-                    bestTotal = n.cost + n.heuristic;
+                    bestTotal = totalCost;
                     bestNode = n;
                 }
             }

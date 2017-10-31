@@ -29,12 +29,15 @@ namespace AI.Movement
 
         private SteeringBehaviour[] steeringBehaviours;
 
+        public bool setRandomPosition = true;
+
         private void Awake()
         {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_SpriteRenderer.color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
 
-            transform.position = new Vector2(Random.Range(-8f, 8f), Random.Range(-5f, 5f));
+            if(setRandomPosition)
+                transform.position = new Vector2(Random.Range(-8f, 8f), Random.Range(-5f, 5f));
         }
 
         // Use this for initialization
