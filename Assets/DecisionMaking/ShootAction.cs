@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootAction : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public float shootRate;
 
     public void Shoot()
     {
@@ -14,5 +15,14 @@ public class ShootAction : MonoBehaviour
 
         bulletGo.GetComponent<Bullet>().SetTeam(GetComponent<HealthState>().team);
     }
-	
+
+    internal void StartShooting()
+    {
+        InvokeRepeating("Shoot", shootRate, shootRate);
+    }
+
+    internal void StopShooting()
+    {
+        CancelInvoke("Shoot");
+    }
 }

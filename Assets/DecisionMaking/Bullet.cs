@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 
     private float travelledDistance = 0f;
 
-    [HideInInspector] public int team;
+    public int team;
 
     public void SetTeam(int teamNbr)
     {

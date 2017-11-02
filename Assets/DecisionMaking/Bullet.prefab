@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4975413096822154}
   - component: {fileID: 212823997786143588}
   - component: {fileID: 114458190230569742}
+  - component: {fileID: 70743675712237108}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -35,12 +36,27 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1212633980186040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: 0}
+  m_LocalPosition: {x: 9.22, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &70743675712237108
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1212633980186040}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0025660477, y: 0.012831567}
+  m_Size: {x: 0.1846047, y: 0.3071836}
+  m_Direction: 1
 --- !u!114 &114458190230569742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -53,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  maxTravelDistance: 15
+  team: 0
 --- !u!212 &212823997786143588
 SpriteRenderer:
   m_ObjectHideFlags: 1
