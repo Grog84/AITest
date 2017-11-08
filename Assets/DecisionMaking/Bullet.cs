@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.blue;
         if (team == 2)
             GetComponent<SpriteRenderer>().color = Color.green;
+        if (team == 10)
+            GetComponent<SpriteRenderer>().color = Color.black;
     }
 
     private void Update()

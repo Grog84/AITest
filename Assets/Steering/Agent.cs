@@ -31,10 +31,27 @@ namespace AI.Movement
 
         public bool setRandomPosition = true;
 
+        private HealthState m_HealthState;
+
         private void Awake()
         {
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
-            m_SpriteRenderer.color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
+            m_HealthState = GetComponent<HealthState>();
+            if (m_HealthState)
+            {
+                int team = m_HealthState.team;
+                if (team == 0)
+                    m_SpriteRenderer.color = Color.red;
+                if (team == 1)
+                    m_SpriteRenderer.color = Color.blue;
+                if (team == 2)
+                    m_SpriteRenderer.color = Color.green;
+                if (team == 10)
+                    m_SpriteRenderer.color = Color.black;
+           
+            }
+            else
+                m_SpriteRenderer.color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), Random.Range(0.5f, 1f));
 
             if(setRandomPosition)
                 transform.position = new Vector2(Random.Range(-8f, 8f), Random.Range(-5f, 5f));
