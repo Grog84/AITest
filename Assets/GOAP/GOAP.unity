@@ -772,6 +772,21 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 2007616495}
+    - target: {fileID: 114035367971809104, guid: c4262ed4c71b7e149a54d27cacfeb4bd,
+        type: 2}
+      propertyPath: maximumLinearAcceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035367971809104, guid: c4262ed4c71b7e149a54d27cacfeb4bd,
+        type: 2}
+      propertyPath: maximumLinearDeceleration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114035367971809104, guid: c4262ed4c71b7e149a54d27cacfeb4bd,
+        type: 2}
+      propertyPath: setRandomPosition
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4262ed4c71b7e149a54d27cacfeb4bd, type: 2}
   m_IsPrefabParent: 0
