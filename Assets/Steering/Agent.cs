@@ -77,7 +77,7 @@ namespace AI.Movement
             // Get the steering output
             foreach (SteeringBehaviour i_steering in steeringBehaviours)
             {
-                totalSteering += i_steering.GetSteering().targetLinearVelocityPercent * i_steering.weight;
+                totalSteering += i_steering.GetSteering().targetLinearVelocityPercent * i_steering.weight * i_steering.magnitude;
                 totalWeight += i_steering.weight;
             }
 
@@ -95,7 +95,7 @@ namespace AI.Movement
             }
             else if (targetVelocity.sqrMagnitude < currentLinearVelocity * currentLinearVelocity)
             {
-                linearAcceleration -= maximumLinearAcceleration;
+                linearAcceleration -= maximumLinearDeceleration;
             }
             else
             {
@@ -131,9 +131,9 @@ namespace AI.Movement
             transform.position += (Vector3)(linearVelocity * Time.deltaTime);
             transform.localEulerAngles += Vector3.forward * angularVelocity * Time.deltaTime; // V0ector3 forward is z 
 		
-            Debug.DrawLine(transform.position, transform.position + (Vector3)linearVelocity, Color.red);
+            // Debug.DrawLine(transform.position, transform.position + (Vector3)linearVelocity, Color.red);
 
-            Debug.DrawLine(transform.position, transform.position + (Vector3)totalSteering, Color.green);
+            // Debug.DrawLine(transform.position, transform.position + (Vector3)totalSteering, Color.green);
 
             if (Mathf.Abs(transform.position.y) > 5.2f)
                 transform.position = new Vector2(transform.position.x, - transform.position.y);

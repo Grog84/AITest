@@ -20,7 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4873731399887428}
   - component: {fileID: 212490244287186434}
+  - component: {fileID: 114035367971809104}
   - component: {fileID: 114681767012180862}
+  - component: {fileID: 114315462877567356}
   - component: {fileID: 114991327515173684}
   - component: {fileID: 114523075169796664}
   - component: {fileID: 114375478145788212}
@@ -76,6 +78,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114035367971809104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436335294913182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07e88e3d0cbc8b488aca49302d41b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumLinearVelocity: 1
+  maximumAngularVelocity: 90
+  maximumLinearAcceleration: 1
+  maximumLinearDeceleration: 1
+  maximumAngularAcceleration: 90
+  setRandomPosition: 0
+--- !u!114 &114315462877567356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1436335294913182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2743d7bb62385d45a674b7caa3e4b80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  targetTransform: {fileID: 0}
 --- !u!114 &114375478145788212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backpack: {fileID: 114991327515173684}
-  moveSpeed: 1
+  toolPrefab: {fileID: 1707059653447914, guid: 93fea5b1a072bed41a0259fef6c60f1e, type: 2}
 --- !u!114 &114681767012180862
 MonoBehaviour:
   m_ObjectHideFlags: 1

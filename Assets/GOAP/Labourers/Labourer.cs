@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+using AI.Movement;
 
 /**
  * A general labourer class.
@@ -12,10 +13,10 @@ using System.Collections.Generic;
 public abstract class Labourer : MonoBehaviour, IGoap
 {
 	public BackpackComponent backpack;
-	public float moveSpeed = 1;
+	// public float moveSpeed = 1;
 
     public GameObject toolPrefab;
-
+    SeekBehaviour seek;
 
 
     void Start ()
@@ -27,7 +28,10 @@ public abstract class Labourer : MonoBehaviour, IGoap
 			backpack.tool = tool;
 			tool.transform.parent = transform; // attach the tool
 		}
-	}
+
+        seek = GetComponent<SeekBehaviour>();
+
+    }
 
 
 	void Update ()
@@ -84,10 +88,13 @@ public abstract class Labourer : MonoBehaviour, IGoap
 
 	public bool moveAgent(GoapAction nextAction) {
 		// move towards the NextAction's target
-		float step = moveSpeed * Time.deltaTime;
-		gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
-		
-		if (gameObject.transform.position.Equals(nextAction.target.transform.position) ) {
+		// float step = moveSpeed * Time.deltaTime;
+		// gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, nextAction.target.transform.position, step);
+
+        seek.targetTransform = nextAction.target.transform;
+
+
+        if ((gameObject.transform.position - nextAction.target.transform.position).sqrMagnitude < 0.01f ) {
 			// we are at the target location, we are done
 			nextAction.SetInRange(true);
 			return true;
