@@ -503,6 +503,9 @@ GameObject:
   m_Component:
   - component: {fileID: 379743628}
   - component: {fileID: 379743629}
+  - component: {fileID: 379743632}
+  - component: {fileID: 379743631}
+  - component: {fileID: 379743630}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -565,6 +568,48 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &379743630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379743627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2669d013707f7a041a80bdf50ec1b17c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  radius: 1
+--- !u!114 &379743631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379743627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 376f77aa9821d3443b924ccef1ee5ba6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 0.5
+  radius: 3
+--- !u!114 &379743632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379743627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07e88e3d0cbc8b488aca49302d41b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maximumLinearVelocity: 1
+  maximumAngularVelocity: 90
+  maximumLinearAcceleration: 1
+  maximumLinearDeceleration: 1
+  maximumAngularAcceleration: 90
 --- !u!1001 &404406588
 Prefab:
   m_ObjectHideFlags: 0
